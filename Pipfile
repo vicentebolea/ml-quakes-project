@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+verify_ssl = true
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+
+[dev-packages]
+
+[packages]
+tensorflow-gpu = "==1.0.1"
+keras = "==1.2.1"
+ipython = "==4.1.2"
+scipy = "*"
+numpy = "*"
+
+[requires]
+python_version = "2.7"
