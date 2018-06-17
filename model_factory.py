@@ -1,17 +1,16 @@
-import model_depth
-import model_time
-import model_location
-import model_magnitude
+class ModelFactory:
+    """
+    Abstract class which expects its subclasses to overload create_model method
+    """
 
-def model_create(which):
-    if which == 'model_depth':
-        return mode_depth()
+    def __init__(self, dim):
+        self.model = create_model()
+        self.dim = dim
+ 
+    def create(self):
+        pass
 
-    if which == 'model_time':
-        return mode_time()
+    @property
+    def model(self):
+        return self.model
 
-    if which == 'model_location':
-        return mode_location()
-
-    if which == 'model_magnitude':
-        return mode_magnitude()

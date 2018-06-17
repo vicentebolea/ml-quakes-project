@@ -1,39 +1,35 @@
 #!/usr/bin/env python
-from extract_features import *
-from model_factory import model_create
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, Embedding, Activation, Lambda, Bidirectional
-from keras.layers.recurrent import LSTM, GRU
-from keras.optimizers import SGD
-from keras import backend as K
+from model_factory_method import model_create
+from extract_features import feature_extract
 
 tests = [
-["model_time",       "./dataset/NN_test_Y_ADO.mat"],
-["model_time",       "./dataset/NN_test_Y_ADO.mat"],
-["model_time",       "./dataset/NN_test_Y_ADO.mat"],
-["model_time",       "./dataset/NN_test_Y_ADO.mat"],
-["model_depth",      "./dataset/NN_test_Y_depth.mat"],
-["model_location",   "./dataset/NN_test_Y_eqLoc.mat"],
-["model_magnitude",  "./dataset/NN_test_Y_magnitude.mat"]
+["model_time",       "./dataset/NN_test_Y_ADO.mat", "sWave_ADO"], 
+["model_time",       "./dataset/NN_test_Y_RPV.mat", "sWave_RPV"],
+["model_time",       "./dataset/NN_test_Y_USC.mat", "sWave_USC"],
+["model_time",       "./dataset/NN_test_Y_RSS.mat", "sWave_RSS"],
+["model_depth",      "./dataset/NN_test_Y_depth.mat", "data_depth"],
+["model_location",   "./dataset/NN_test_Y_eqLoc.mat", "data_eqLoc"],
+["model_magnitude",  "./dataset/NN_test_Y_magnitude.mat", "data_mag"]
 ]
 
-for model in tests:
-    train_x, train_y, test_x, test_y = feature_extract(model[1])
-    model = model_create(model[0])
-    
+BATCH_SIZE = 1000
+EPOCHS     = 20 
 
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+for setup in tests:
+    train_x, train_y, test_x, test_y = feature_extract(setup[1], setup[2])
+    model = model_create(setup[0])
+    model.set_dim(40)
+    model = model.create_model()
+    
+    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 
     model.fit(train_x, train_y,
-              batch_size=batch_size,
+              batch_size=BATCH_SIZE,
               shuffle=True,
-              epochs=20,
+              nb_epochs= EPOCHS
               verbose=1,
               validation_data=(test_x, test_y))
 
     score = model.evaluate(test_x, test_y, verbose=0)
     print('Test loss:', score[0])
     print('Test accuracy:', score[1])
-
-    model.train(train_x, train_y)
-    model.test(test_x, test_y)
