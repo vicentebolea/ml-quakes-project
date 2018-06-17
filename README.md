@@ -24,6 +24,7 @@ Based on the following independent variable:
 
 ## AUTHORS
 
-  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> @vicentebolea
-  - Olzhas Kaiyrakhmet <olzhabay.i@gmail.com> @olzhabay
-
+Hero                         | email
+-----------------------------|-------------------------
+Vicente Adolfo Bolea Sanchez | <vicente.bolea@gmail.com>
+Olzhas Kaiyrakhmet           | olzhabay.i@gmail.com>
