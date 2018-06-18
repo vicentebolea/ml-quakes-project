@@ -7,7 +7,8 @@ class ModelTime(ModelFactory):
     def create(self):
         self.model = Sequential()
         model = Sequential()
-        model.add(Dense(46, input_shape=(self.dim,), activation='relu'))
-        model.add(Dense(512, activation='sigmoid'))
-        model.add(Dense(1, activation='softmax'))
+        model.add(Dense(78, input_shape=(self.dim,), activation='relu'))
+        model.add(Dense(39, activation='relu'))
+        model.add(Dense(20, activation='relu'))
+        model.add(Dense(1))
         return model

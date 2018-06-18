@@ -14,6 +14,6 @@ def prepare_features(labels_file, filekey):
     dataset_x = sio.loadmat(FILE1)['data']
     dataset_y = sio.loadmat(labels_file)[filekey]
 
-    train_x, test_x, train_y, test_y = train_test_split(dataset_x, dataset_y, test_size=0.2)
+    train_x, test_x, train_y, test_y = train_test_split(dataset_x, dataset_y, test_size=0.4)
 
     return train_x, train_y, test_x, test_y
