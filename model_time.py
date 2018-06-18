@@ -8,7 +8,6 @@ class ModelTime(ModelFactory):
         model = Sequential()
         model.add(Dense(53, init='normal', input_shape=(self.dim,), activation='relu'))
         model.add(Dense(10, activation='relu'))
-        #model.add(Dense(5, activation='relu'))
         model.add(Dense(1, init='normal')) #, activation='elu'))
         self.model = model
         return model

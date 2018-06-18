@@ -7,8 +7,7 @@ class ModelLocation(ModelFactory):
     def create(self):
         model = Sequential()
         model.add(Dense(53, init='normal', input_shape=(self.dim,), activation='relu'))
-        model.add(Dense(8, activation='relu'))
-        model.add(Dense(5, activation='relu'))
+        model.add(Dense(10, activation='relu'))
         model.add(Dense(2, init='normal')) #, activation='elu'))
         self.model = model
         return model
