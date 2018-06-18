@@ -2,6 +2,7 @@
 from model_factory_method import model_create
 from extract_features import prepare_features
 from IPython import embed
+from os import environ
 
 tests = [
 ["model_time",       "./dataset/NN_test_Y_ADO.mat", "sWave_ADO"], 
@@ -14,12 +15,18 @@ tests = [
 ]
 
 BATCH_SIZE = 1000
-EPOCHS     = 20000
+
+EPOCHS     = 2000
+if 'EPOCHS' in environ:
+    EPOCHS = int(environ['EPOCHS'])
+
 
 for setup in tests:
     train_x, train_y, test_x, test_y = prepare_features(setup[1], setup[2])
-    model_factory = model_create(setup[0],39)
+    model_factory = model_create(setup[0],53)
     model = model_factory.model
+
+    #embed()
 
     model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 
