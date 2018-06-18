@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from model_factory_method import model_create
-from extract_features import feature_extract
+from extract_features import prepare_features
 
 tests = [
 ["model_time",       "./dataset/NN_test_Y_ADO.mat", "sWave_ADO"], 
@@ -16,7 +16,7 @@ BATCH_SIZE = 1000
 EPOCHS     = 20 
 
 for setup in tests:
-    train_x, train_y, test_x, test_y = feature_extract(setup[1], setup[2])
+    train_x, train_y, test_x, test_y = prepare_features(setup[1], setup[2])
     model = model_create(setup[0])
     model.set_dim(40)
     model = model.create_model()
@@ -26,7 +26,7 @@ for setup in tests:
     model.fit(train_x, train_y,
               batch_size=BATCH_SIZE,
               shuffle=True,
-              nb_epochs= EPOCHS
+              nb_epochs=EPOCHS,
               verbose=1,
               validation_data=(test_x, test_y))
 

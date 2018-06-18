@@ -9,10 +9,11 @@ FILE1 = './dataset/NN_test_X.mat'
 FILE2 = './dataset/NN_test_X_1statn.mat'
 FILE3 = './dataset/NN_test_X_3statns.mat'
 
+
 def prepare_features(labels_file, filekey):
     dataset_x = sio.loadmat(FILE1)['data']
     dataset_y = sio.loadmat(labels_file)[filekey]
 
-    train_x , test_x, train_y, test_y = train_test_split(dataset_x, dataset_y, test_size=0.2)
+    train_x, test_x, train_y, test_y = train_test_split(dataset_x, dataset_y, test_size=0.2)
 
-    return (train_x.as_matrix(), train_y, test_x.as_matrix(), test_y)
+    return train_x.as_matrix(), train_y, test_x.as_matrix(), test_y
