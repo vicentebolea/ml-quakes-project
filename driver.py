@@ -7,9 +7,6 @@ from IPython import embed
 from os import environ
 from sklearn.metrics import accuracy_score, precision_score
 
-seed = 7
-np.random.seed(seed)
-
 tests = [
 ["model_time",       "./dataset/NN_test_Y_ADO.mat", "sWave_ADO"], 
 ["model_time",       "./dataset/NN_test_Y_RPV.mat", "sWave_RPV"],
@@ -17,7 +14,7 @@ tests = [
 ["model_time",       "./dataset/NN_test_Y_RSS.mat", "sWave_RSS"],
 ["model_depth",      "./dataset/NN_test_Y_depth.mat", "data_depth"],
 ["model_magnitude",  "./dataset/NN_test_Y_magnitude.mat", "data_mag"],
-#["model_location",   "./dataset/NN_test_Y_eqLoc.mat", "data_eqLoc"]
+["model_location",   "./dataset/NN_test_Y_eqLoc.mat", "data_eqLoc"]
 ]
 
 BATCH_SIZE = 50
@@ -40,7 +37,6 @@ for setup in tests:
               nb_epoch=EPOCHS,
               verbose=1,
               validation_split=0.2)
-              #validation_data=(test_x, test_y))
 
     score = model.evaluate(test_x, test_y, verbose=0)
     print('Test loss:', score[0])
