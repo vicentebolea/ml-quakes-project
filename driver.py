@@ -17,13 +17,14 @@ tests = [
 ["model_location",   "./dataset/NN_test_Y_eqLoc.mat", "data_eqLoc"]
 ]
 
-BATCH_SIZE = 50
+BATCH_SIZE = 100
 
 EPOCHS     = 2000
 if 'EPOCHS' in environ:
     EPOCHS = int(environ['EPOCHS'])
 
 
+scores = { }
 for setup in tests:
     train_x, train_y, test_x, test_y = prepare_features(setup[1], setup[2])
     model_factory = model_create(setup[0],53)
@@ -38,8 +39,14 @@ for setup in tests:
               verbose=1,
               validation_split=0.2)
 
-    score = model.evaluate(test_x, test_y, verbose=0)
-    print('Test loss:', score[0])
-    print('Test mse:', score[1])
+    scores[setup[2]] = model.evaluate(test_x, test_y, verbose=0)
+    #print('Test loss:', score[0])
+    #print('Test mse:', score[1])
 
-embed()
+
+for name,score in scores.iteritems():
+    print "TEST NAME: ", name
+    print "Total MSE: ", score[1]
+
+
+#embed()

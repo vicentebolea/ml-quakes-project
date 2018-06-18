@@ -11,7 +11,7 @@ Based on the following independent variable:
   2. Ten different detecting stations's P-wave arrival time.
 
 ## REQUIREMENTS
-  1. Having a dedicated NVIDIA GPU
+  1. Having a dedicated NVIDIA GPU + CUDA 8.0
 
 ## INSTALLING
 
@@ -21,6 +21,10 @@ Based on the following independent variable:
 ## RUNNING IT
 
     $ pipenv run python ./driver.py
+
+Our models start converging at a number of epochs = 2000. Thus to Change the number of epochs:
+
+    $ EPOCHS=3000 pipenv run python ./driver.py
 
 ## AUTHORS
 
