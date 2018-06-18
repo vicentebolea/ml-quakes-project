@@ -4,8 +4,8 @@ class ModelFactory:
     """
 
     def __init__(self, dim):
-        self.model = self.create()
         self.dim = dim
+        self.model = self.create()
  
     def create(self):
         pass

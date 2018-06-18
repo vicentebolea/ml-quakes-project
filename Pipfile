@@ -1,7 +1,7 @@
 [[source]]
 name = "pypi"
 verify_ssl = true
-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+url = "https://pypi.python.org/simple/"
 
 [dev-packages]
 
@@ -11,6 +11,8 @@ keras = "==1.2.1"
 ipython = "==4.1.2"
 scipy = "*"
 numpy = "*"
+sklearn = "*"
+pandas = "*"
 
 [requires]
 python_version = "2.7"

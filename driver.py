@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from model_factory_method import model_create
 from extract_features import prepare_features
+from IPython import embed
 
 tests = [
 ["model_time",       "./dataset/NN_test_Y_ADO.mat", "sWave_ADO"], 
@@ -17,19 +18,20 @@ EPOCHS     = 20
 
 for setup in tests:
     train_x, train_y, test_x, test_y = prepare_features(setup[1], setup[2])
-    model = model_create(setup[0])
-    model.set_dim(40)
-    model = model.create_model()
-    
+    model_factory = model_create(setup[0],39)
+    model = model_factory.model
+
     model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 
     model.fit(train_x, train_y,
               batch_size=BATCH_SIZE,
               shuffle=True,
-              nb_epochs=EPOCHS,
+              nb_epoch=EPOCHS,
               verbose=1,
               validation_data=(test_x, test_y))
 
     score = model.evaluate(test_x, test_y, verbose=0)
     print('Test loss:', score[0])
     print('Test accuracy:', score[1])
+
+embed()
