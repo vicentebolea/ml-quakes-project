@@ -6,8 +6,8 @@ class ModelFactory:
     def __init__(self, dim):
         self.model = self.create()
         self.dim = dim
- 
-    def create(self):
+
+    def set_dim(self, dim):
         pass
 
     @property

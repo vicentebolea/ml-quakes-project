@@ -5,7 +5,6 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, Embeddin
 
 class ModelDepth(ModelFactory):
     def create(self):
-        self.model = Sequential()
         model = Sequential()
         model.add(Dense(46, input_shape=(self.dim,), activation='selu'))
         model.add(Dense(512, activation='sigmoid'))

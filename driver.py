@@ -17,9 +17,7 @@ EPOCHS     = 20
 
 for setup in tests:
     train_x, train_y, test_x, test_y = prepare_features(setup[1], setup[2])
-    model = model_create(setup[0])
-    model.set_dim(40)
-    model = model.create_model()
+    model = model_create(setup[0], 40)
     
     model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
 
