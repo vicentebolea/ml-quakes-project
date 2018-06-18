@@ -16,4 +16,4 @@ def prepare_features(labels_file, filekey):
 
     train_x, test_x, train_y, test_y = train_test_split(dataset_x, dataset_y, test_size=0.2)
 
-    return train_x.as_matrix(), train_y, test_x.as_matrix(), test_y
+    return train_x, train_y, test_x, test_y
