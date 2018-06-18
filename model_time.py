@@ -5,13 +5,10 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, Embeddin
 
 class ModelTime(ModelFactory):
     def create(self):
-        self.model = Sequential()
         model = Sequential()
-        model.add(Dense(53, input_shape=(self.dim,), activation='relu'))
-#        model.add(Dropout(0.25))
-        model.add(Dense(25))
-        #model.add(Dropout(0.25))
-        #model.add(Dense(20))
-        #model.add(Dense(10))
-        model.add(Dense(1)) #, activation='sigmoid'))
+        model.add(Dense(53, init='normal', input_shape=(self.dim,), activation='relu'))
+        model.add(Dense(8, activation='relu'))
+        model.add(Dense(5, activation='relu'))
+        model.add(Dense(1, init='normal')) #, activation='elu'))
+        self.model = model
         return model

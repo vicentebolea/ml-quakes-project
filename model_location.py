@@ -5,9 +5,11 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, Embeddin
 
 class ModelLocation(ModelFactory):
     def create(self):
-        self.model = Sequential()
         model = Sequential()
-        model.add(Dense(46, input_shape=(self.dim,), activation='relu'))
-        model.add(Dense(512, activation='sigmoid'))
-        model.add(Dense(1, activation='softmax'))
+        model.add(Dense(53, init='normal', input_shape=(self.dim,), activation='relu'))
+        model.add(Dense(8, activation='relu'))
+        model.add(Dense(5, activation='relu'))
+        model.add(Dense(1, init='normal')) #, activation='elu'))
+        self.model = model
         return model
+
